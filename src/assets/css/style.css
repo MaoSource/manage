@@ -1,0 +1,7 @@
+/*全局样式*/
+html,body,#app{
+    margin: 0;
+    padding: 0;
+    /*统一设置高度为100%*/
+    height: 100%;
+}
