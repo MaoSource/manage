@@ -24,11 +24,19 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
-    component: () => import('../views/Main.vue')
+    component: () => import('../views/Main.vue'),
+    children: [
+      {
+        path: '/users',
+        name: 'User',
+        component: () => import('../views/user/User.vue')
+      }
+    ]
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

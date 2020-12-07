@@ -1,44 +1,50 @@
 <template>
   <div>
-    <template>
-      <el-submenu index="1">
+    <template v-for="item in this.menuList">
+      <el-submenu :disabled="item.disabled" :index="item.id+''" :key="item.id" v-if="item.children.length>0">
+<!--        一级目录-->
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
+          <i :class="item.icon"></i>
+          <span slot="title">{{ item.menuName }}</span>
         </template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-          <el-menu-item index="1-3">选项2</el-menu-item>
-          <el-menu-item index="1-4">选项2</el-menu-item>
-          <el-menu-item index="1-5">选项2</el-menu-item>
-          <el-menu-item index="1-6">选项2</el-menu-item>
-        </el-menu-item-group>
+<!--        子元素-->
+<!--        自己调用自己-->
+<!--        显示一级children-->
+        <MenuTree :menu-list="item.children"></MenuTree>
       </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航二</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项2</el-menu-item>
-          <el-menu-item index="2-4">选项2</el-menu-item>
-          <el-menu-item index="2-5">选项2</el-menu-item>
-          <el-menu-item index="2-6">选项2</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
+<!--      显示二级children-->
+<!--      如果有子元素就展示下面的，没有就只展示上面的-->
+<!--      :route="item.url+''菜单路由路劲-->
+      <el-menu-item
+        :key="item.children.id"
+        v-else
+        :disabled="item.disabled"
+        :index="item.url+''"
+        :route="item.url+''"
+      >
+        <i :class="item.icon"></i>
+        <span slot="title">{{ item.menuName }}</span>
+      </el-menu-item>
     </template>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MenuTree'
+  name: 'MenuTree',
+  props: ['menuList']
 }
 </script>
 
 <style scoped>
+/*实现了一个溢出处理*/
+.el-menu--collapse span,
+.el-menu--collapse i.el-submenu__icon-arrow {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  visibility: hidden;
+  display: inline-block;
+}
 
 </style>
