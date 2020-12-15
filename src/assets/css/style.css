@@ -5,3 +5,11 @@ html,body,#app{
     /*统一设置高度为100%*/
     height: 100%;
 }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #a1a3a9;
+    border-radius: 5px;
+}

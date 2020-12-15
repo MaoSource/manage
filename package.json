@@ -8,9 +8,13 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
+    "filepond": "^4.23.1",
     "vue": "^2.6.11",
+    "vue-axios": "^3.2.0",
+    "vue-filepond": "^6.0.3",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
@@ -28,6 +32,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "filepond-plugin-file-validate-type": "^1.2.5",
+    "filepond-plugin-image-preview": "^4.6.4",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.11"
